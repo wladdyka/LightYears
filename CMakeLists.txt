@@ -10,6 +10,9 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXTENSIONS OFF)
 
+# dependencies
+find_package(SFML COMPONENTS system window graphics CONFIG REQUIRED)
+
 # custom variables
 set(LIGHT_YEARS_GAME_TARGET_NAME LightYearsGame)
 
