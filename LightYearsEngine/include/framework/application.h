@@ -1,11 +1,19 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
+#include "world.h"
+#include "framework/core.h"
+
 namespace ly {
+    class World;
+
     class Application {
     public:
         Application();
         void Run();
+
+        template<typename WorldType>
+        weak<WorldType> LoadWorld();
     private:
         void RenderInternal();
         virtual void Render();
@@ -16,5 +24,15 @@ namespace ly {
         sf::RenderWindow mWindow;
         float mTargetFramerate;
         sf::Clock mTickClock;
+        shared<World> mCurrentWorld;
     };
+
+    template<typename WorldType>
+    weak<WorldType> Application::LoadWorld() {
+        shared<WorldType> newWorld{new WorldType{this}};
+        mCurrentWorld = newWorld;
+        mCurrentWorld->BeginPlayInternal();
+        return newWorld;
+    }
+
 }
