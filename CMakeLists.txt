@@ -21,3 +21,4 @@ add_subdirectory(LightYearsEngine)
 add_subdirectory(LightYearsGame)
 
 target_link_libraries(${LIGHT_YEARS_ENGINE_TARGET_NAME} PRIVATE sfml-system sfml-network sfml-graphics sfml-window)
+target_link_libraries(${LIGHT_YEARS_GAME_TARGET_NAME} PUBLIC ${LIGHT_YEARS_ENGINE_TARGET_NAME} sfml-system sfml-network sfml-graphics sfml-window)
