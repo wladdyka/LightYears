@@ -7,8 +7,11 @@ namespace ly {
         Application();
         void Run();
     private:
-        void Tick(float deltaTime);
-        void Render();
+        void RenderInternal();
+        virtual void Render();
+
+        void TickInternal(float deltaTime);
+        virtual void Tick(float deltaTime);
 
         sf::RenderWindow mWindow;
         float mTargetFramerate;
