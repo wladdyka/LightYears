@@ -3,12 +3,13 @@
 #include "framework/world.h"
 
 namespace ly {
-    Application::Application()
-        : mWindow{sf::VideoMode(768, 1024), "LightYears"},
-        mTargetFramerate{60.0f},
-        mTickClock{},
-        mCurrentWorld{}
-    { }
+    Application::Application(unsigned int width, unsigned int height, const std::string &title, sf::Uint32 style)
+    : mWindow{sf::VideoMode(width, height), title, style},
+       mTargetFramerate{60.0f},
+       mTickClock{},
+       mCurrentWorld{}
+    {
+    }
 
     void Application::Run() {
         mTickClock.restart();
@@ -55,10 +56,8 @@ namespace ly {
     }
 
     void Application::Render() {
-        sf::RectangleShape rect{sf::Vector2f{100, 100}};
-        rect.setFillColor(sf::Color::Green);
-        rect.setOrigin(50, 50);
-        rect.setPosition(mWindow.getSize().x / 2, mWindow.getSize().y / 2);
-        mWindow.draw(rect);
+        if (mCurrentWorld) {
+            mCurrentWorld->Render(mWindow);
+        }
     }
 }

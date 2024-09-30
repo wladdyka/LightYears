@@ -33,12 +33,18 @@ namespace ly {
             if (iter->get()->IsPendingDestroy()) {
                 iter = mActors.erase(iter);
             } else {
-                iter->get()->Tick(deltaTime);
+                iter->get()->TickInternal(deltaTime);
                 ++iter;
             }
         }
 
         Tick(deltaTime);
+    }
+
+    void World::Render(sf::RenderWindow &window) {
+        for(const auto& actor : mActors) {
+            actor->Render(window);
+        }
     }
 
     World::~World() {
