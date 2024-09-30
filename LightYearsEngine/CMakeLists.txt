@@ -7,6 +7,9 @@ add_library(
         ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/world.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/world.cpp
 
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/object.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/object.cpp
+
         ${CMAKE_CURRENT_SOURCE_DIR}/include/framework/core.h
         ${CMAKE_CURRENT_SOURCE_DIR}/src/framework/core.cpp
 

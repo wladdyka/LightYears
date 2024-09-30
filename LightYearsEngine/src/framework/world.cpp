@@ -29,8 +29,13 @@ namespace ly {
         }
         mPendingActors.clear();
 
-        for(const shared<Actor>& actor : mActors) {
-            actor->Tick(deltaTime);
+        for(auto iter = mActors.begin(); iter != mActors.end();) {
+            if (iter->get()->IsPendingDestroy()) {
+                iter = mActors.erase(iter);
+            } else {
+                iter->get()->Tick(deltaTime);
+                ++iter;
+            }
         }
 
         Tick(deltaTime);
