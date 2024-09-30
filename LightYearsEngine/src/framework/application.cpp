@@ -8,8 +8,7 @@ namespace ly {
         mTargetFramerate{60.0f},
         mTickClock{},
         mCurrentWorld{}
-    {
-    }
+    { }
 
     void Application::Run() {
         mTickClock.restart();
